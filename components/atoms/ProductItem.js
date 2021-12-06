@@ -9,10 +9,16 @@ import {
   Platform,
   StyleSheet,
 } from "react-native";
+import {getRatings, calcRating} from '../../helpers/calculateRatings'
 import Colors from "../../constants/Colors";
+import StarRating from "./StarRating";
 
 const ProductItem = (props) => {
   let TouchableComponent = TouchableOpacity;
+  const ratingScores = props.rating.map(getRatings);
+  const totalRating = ratingScores.reduce(calcRating, 0);
+  const averageRating = totalRating / ratingScores.length;
+  const articleRating = averageRating;
 
   if (Platform.OS === "android" && Platform.Version >= 21) {
     TouchableComponent = TouchableNativeFeedback;
@@ -21,21 +27,21 @@ const ProductItem = (props) => {
     <View style={styles.product}>
       <View style={styles.touchable}>
         <TouchableComponent onPress={props.onViewDetail} useForeground>
-          <View>
+          <View style={styles.details}>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={{ uri: props.imgUrl }} />
             </View>
-            <View style={styles.details}>
-              <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title}>{props.title}</Text>
+            <View style={styles.priceAndRating}>
               <Text style={styles.price}>${props.price}</Text>
+              <StarRating rating={articleRating}/>
             </View>
-            <View style={styles.buttons}>
+            <View style={styles.buttonContainer}>
               <Button
-                color={Colors.primary}
-                title="View Details"
-                onPress={props.onViewDetail}
+                title="Add to Cart"
+                onPress={props.onAddToCart}
+                color={"#7043ec"}
               />
-              <Button title="Add to Cart" onPress={props.onAddToCart} />
             </View>
           </View>
         </TouchableComponent>
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     elevation: 5,
-    backgroundColor: "white",
+    backgroundColor: "#23232e",
     borderRadius: 10,
     margin: 20,
     height: 300,
@@ -64,23 +70,24 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    fontFamily: "Abel_400Regular"
+    fontFamily: "Abel_400Regular",
+    color: "white",
+    textAlign: "center",
+    marginVertical: 10,
   },
   price: {
-    fontSize: 14,
-    color: Colors.primary,
+    fontSize: 19,
+    color: Colors.accent,
+    textAlign: "center",
   },
-  details: {
-    alignItems: "center",
-    height: "15%",
-    padding: 10,
-  },
-  buttons: {
-    flexDirection: "row",
+  priceAndRating: {
+    display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "25%",
+    flexDirection: "row",
     paddingHorizontal: 20,
+    marginBottom: 10,
+    width: "100%",
   },
   image: {
     width: "100%",
@@ -88,10 +95,17 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: "100%",
-    height: "60%",
+    height: "58%",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     overflow: "hidden",
+  },
+  buttonContainer: {
+    width: "30%",
+  },
+  details: {
+    display: "flex",
+    alignItems: "center",
   },
 });
 

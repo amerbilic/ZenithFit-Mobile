@@ -23,7 +23,7 @@ const CategoriesScreen = (props) => {
     return (
       <CategoryGridTile
         title={itemData.item.name}
-        color={"#484a4d"}
+        color={"white"}
         imgUrl={itemData.item.imageUrl}
         onSelect={() => {
           props.navigation.navigate("ProductsOverview", {
@@ -36,7 +36,7 @@ const CategoriesScreen = (props) => {
   };
 
   return (
-    <View>
+    <View style={styles.screen}>
       {!isLoading ? (
         <FlatList
           data={categories}
@@ -52,9 +52,7 @@ const CategoriesScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor:"white"
   },
   gridItem: {
     flex: 1,

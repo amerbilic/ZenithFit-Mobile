@@ -89,12 +89,14 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     marginVertical: 8,
+    color:"white"
   },
   input: {
     paddingHorizontal: 2,
     paddingVertical: 5,
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
+    borderBottomColor: "white",
+    borderBottomWidth: 0.5,
+    color:"white"
   },
   errorContainer: {
     marginVertical: 5,

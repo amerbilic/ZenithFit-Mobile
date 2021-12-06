@@ -25,7 +25,7 @@ export const signup = (email, password) => {
         .post("http://192.168.0.13:8000/auth/signup", {
           email,
           password,
-          username: "amerikano1234225",
+          username: email,
           firstname: "Amer",
           lastname: "Rorie",
         })

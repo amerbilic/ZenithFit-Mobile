@@ -25,7 +25,7 @@ import * as authActions from "../store/actions/auth";
 
 const defaultOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === "android" ? "#008080" : "",
+    backgroundColor: Platform.OS === "android" ? "#7043ec" : "",
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
   headerTitleAlign: "center",
@@ -119,7 +119,7 @@ export const ShopNavigator = () => {
               <DrawerItemList {...props} />
               <Button
                 title="Logout"
-                color={"#008080"}
+                color={"#6649b8"}
                 onPress={() => {
                   dispatch(authActions.logout());
                 }}
@@ -129,14 +129,14 @@ export const ShopNavigator = () => {
         );
       }}
       screenOptions={{
-        drawerActiveTintColor: "#5DFDCB",
+        drawerActiveTintColor: "#7853df",
         drawerInactiveTintColor: "white",
         drawerStyle: {
-          backgroundColor: "#484a4d",
+          backgroundColor: "#23232e",
           width: 220,
         },
         headerStyle: {
-          backgroundColor: Platform.OS === "android" ? "#484a4d" : "",
+          backgroundColor: Platform.OS === "android" ? "#1c1c22" : "",
         },
         headerTintColor: "white",
         headerTitleAlign: "center",

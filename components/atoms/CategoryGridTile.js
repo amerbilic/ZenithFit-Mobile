@@ -8,6 +8,7 @@ import {
   TouchableNativeFeedback,
   ImageBackground,
 } from "react-native";
+import Colors from "../../constants/Colors";
 
 const CategoryGridTile = (props) => {
 
@@ -27,7 +28,7 @@ const CategoryGridTile = (props) => {
     <View style={styles.gridItem}>
       <TouchableCmp style={{ flex: 1 }} onPress={props.onSelect}>
         <View
-          style={{ ...styles.container, ...{ backgroundColor: props.color } }}
+          style={{ ...styles.container, ...{ backgroundColor: "#23232e" } }}
         >
           <ImageBackground style={styles.image} source={{ uri: props.imgUrl }}>
             <View style={styles.textContainer}>
@@ -44,14 +45,15 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     margin: 15,
-    height: 150,
+    height: 100,
     borderRadius: 10,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
     elevation: 5,
   },
   container: {
     flex: 1,
-    borderRadius: 10,
+    borderBottomWidth:5,
+    borderBottomColor:"#7043ec",
     shadowColor: "black",
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
@@ -82,10 +84,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 13,
     fontFamily: "Abel_400Regular",
-    color: "white",
-    padding:5,
+    color: Colors.accent,
+    padding:0,
     textAlign:"center",
   },
 });

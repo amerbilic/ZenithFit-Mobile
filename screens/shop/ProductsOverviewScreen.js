@@ -47,6 +47,7 @@ const ProductsOverviewScreen = (props) => {
               title={itemData.item.name}
               price={itemData.item.price}
               imgUrl={itemData.item.img}
+              rating={itemData.item.rating}
               onAddToCart={() => {
                 dispatch(cartActions.addToCart(itemData.item));
               }}
@@ -54,6 +55,7 @@ const ProductsOverviewScreen = (props) => {
                 props.navigation.navigate("ProductDetail", {
                   productId: itemData.item.id,
                   name: itemData.item.name,
+                  rating: itemData.item.rating,
                 });
               }}
             />

@@ -30,6 +30,7 @@ const GoalsScreen = (props) => {
         <FlatList
           data={productsList}
           keyExtractor={(item) => item.id}
+          numColumns={2}
           renderItem={(itemData) => (
             <CategoryGridTile
               title={itemData.item.name}

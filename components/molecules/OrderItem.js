@@ -8,24 +8,25 @@ const OrderItem = (props) => {
   return (
     <View style={styles.orderItem}>
       <View style={styles.summary}>
-        <Text style={styles.totalAmount}>${props.amount.toFixed(2)}</Text>
+        <Text style={styles.totalAmount}>${props.amount}</Text>
         <Text style={styles.date}>{props.date}</Text>
-      </View>
       <Button
-        color={Colors.primary}
+        color={"#7043ec"}
         title="Show Details"
         onPress={() => {
           setShowDetails((prevState) => !prevState);
         }}
       />
+      </View>
       {showDetails && (
         <View style={styles.detailItems}>
           {props.items.map((cartItem) => (
             <CartItem
-              key={cartItem.productId}
+              key={cartItem.article.id}
               quantity={cartItem.quantity}
-              amount={cartItem.sum}
-              title={cartItem.productTitle}
+              amount={cartItem.article.price}
+              title={cartItem.article.name}
+              userRating={true}
             />
           ))}
         </View>
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     elevation: 5,
-    backgroundColor: "white",
+    backgroundColor: "#302a38",
     borderRadius: 10,
     margin: 20,
     padding: 10,
@@ -52,18 +53,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
+    padding:5,
   },
   totalAmount: {
     fontWeight: "bold",
     fontSize: 16,
+    color:Colors.accent
   },
   date: {
     fontSize: 16,
-    color: "#888",
+    color: "white",
+    opacity:0.8
   },
-  detailItems:{
-      width: "100%",
-  }
+  detailItems: {
+    width: "100%",
+  },
 });
 
 export default OrderItem;

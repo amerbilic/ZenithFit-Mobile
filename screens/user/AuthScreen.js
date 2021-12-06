@@ -107,7 +107,7 @@ const AuthScreen = (props) => {
       keyboardVerticalOffset={1}
       style={styles.screen}
     >
-      <LinearGradient colors={["#008080", "#008080"]} style={styles.gradient}>
+      <LinearGradient colors={["#5d24fa", "#0a0711"]} style={styles.gradient}>
         <Card style={styles.authContainer}>
           <ScrollView>
             <Input
@@ -135,7 +135,7 @@ const AuthScreen = (props) => {
             />
             <View style={styles.buttonContainer}>
               {isLoading ? (
-                <ActivityIndicator size="small" color={Colors.primary} />
+                <ActivityIndicator size="small" color={"#7043ec"} />
               ) : (
                 <Button
                   title={isSignup ? "Sign Up" : "Login"}
@@ -150,6 +150,7 @@ const AuthScreen = (props) => {
                 onPress={() => {
                   setIsSignup((prevState) => !prevState);
                 }}
+                color={"#7043ec"}
               />
             </View>
           </ScrollView>
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    color:"#008080"
+    color: "#008080",
   },
   authContainer: {
     width: "80%",
